@@ -117,19 +117,18 @@ title="""
 """
 
 with gr.Blocks() as demo:
-    with gr.Column():
+    with gr.Row():
         gr.HTML(title)
-        with gr.Row():
-            with gr.Column():
-                video_input = gr.Video(source="upload", type="filepath")
-                gif_input = gr.File(label="import a GIF instead", file_types=['.gif'])
-                gif_input.change(fn=convertG2V, inputs=gif_input, outputs=video_input)
-                submit_btn = gr.Button("Submit")
+        with gr.Column():
+            video_input = gr.Video(source="upload", type="filepath")
+            gif_input = gr.File(label="import a GIF instead", file_types=['.gif'])
+            gif_input.change(fn=convertG2V, inputs=gif_input, outputs=video_input)
+            submit_btn = gr.Button("Submit")
             
-            with gr.Column():
-                video_output = gr.Video()
-                file_output = gr.Files()
+        with gr.Column():
+            video_output = gr.Video()
+            file_output = gr.Files()
 
     submit_btn.click(fn=infer, inputs=[video_input], outputs=[video_output, file_output])
 
-demo.launch()
+demo.launch(share=True)
