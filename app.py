@@ -51,6 +51,7 @@ def get_openpose_filter(i):
     
     #image = np.array(image)
 
+# https://github.com/patrickvonplaten/controlnet_aux
 # load processor from processor_id
 # options are:
 # ["canny", "depth_leres", "depth_leres++", "depth_midas", "depth_zoe", "lineart_anime",
